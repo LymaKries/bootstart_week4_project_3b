@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+return new  class extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('airbnb_payments', function (Blueprint $table) {
+        Schema::create('google_drive_files', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->enum('type_of_payment', ['mastercard', 'visa', 'paypal', 'transfer']);
-            $table->unsignedInteger('card_number');
-            $table->string('card_name');
+            $table->string('name');
+            $table->unsignedBigInteger('weight')->nullable();
+            $table->enum('type_of_file', ['pdf', 'sheet', 'doc', 'mp3', 'mp4']);
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('airbnb_payments');
+        Schema::dropIfExists('google_drive_files');
     }
 };

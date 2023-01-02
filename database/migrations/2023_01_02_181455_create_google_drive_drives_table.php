@@ -13,12 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('airbnb_payments', function (Blueprint $table) {
+        Schema::create('google_drive_drives', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->enum('type_of_payment', ['mastercard', 'visa', 'paypal', 'transfer']);
-            $table->unsignedInteger('card_number');
-            $table->string('card_name');
+            $table->unsignedInteger('available_space');
+            $table->unsignedInteger('file_id');
+            $table->unsignedBigInteger('folder_id');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('airbnb_payments');
+        Schema::dropIfExists('google_drive_drives');
     }
 };

@@ -13,18 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('airbnb_users', function (Blueprint $table) {
+        Schema::create('google_drive_users', function (Blueprint $table) {
             $table->id();
             $table->string('first_name');
             $table->string('last_name');
-            $table->string('pseudo');
             $table->string('password');
             $table->string('email');
             $table->string('phone');
-            $table->enum('role', ['owner','customer']);
-            $table->unsignedBigInteger('adress_id');
             $table->date('birth');
-            $table->unsignedBigInteger('payment_id');
+            $table->string('gender');
+            $table->string('country');
+            $table->enum('language', ['french', 'english']);
             $table->timestamps();
         });
     }
@@ -36,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('airbnb_users');
+        Schema::dropIfExists('google_drive_users');
     }
 };
